@@ -19,12 +19,8 @@ class CountSemaphore {
 
     semWait() {
         if (this.count) {
-            console.log(this.count);
-            console.log("LOCK FREE");
             this.count--;
         } else {
-            console.log(this.count);
-            console.log("LOCK CONTENDED");
             return new Promise((resolve)=>{
                 this.waiting.push(resolve);
             });
@@ -32,14 +28,12 @@ class CountSemaphore {
     }
 
     semPost() {
-        console.log("FREEING LOCK");
         this.count++;
         if (this.waiting.length > 0) {
             let next = this.waiting.pop();
             this.count--;
             next();
         }
-        console.log(this.count);
     }
 
 }
