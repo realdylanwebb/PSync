@@ -65,8 +65,49 @@ class Mutex{
 
 
 class MutexRecursive{
-    
+    constructor() {
+        this.waiting = [];
+        this.lock = 0;
+    }
+
+    tryLock() {
+        
+    }
+
+    lock() {
+
+    }
+
+    unlock() {
+        this.lock--;
+        if (!this.lock) {
+            let next = this.waiting.pop();
+            next();
+        }
+    }
 }
 
 
-module.exports = {CountSemaphore: CountSemaphore, Mutex: Mutex, MutexRecursive: MutexRecursive};
+class Barrier {
+    constructor(numMembers) {
+        this.busy = numMembers;
+        this.waiting = [];
+    }
+
+    signal() {
+        this.busy--;
+        if(!this.busy) {
+            this.waiting.forEach(resolve => {
+                    resolve();
+            });
+        } else {
+            return new Promise((resolve)=>{
+                this.waiting.push(resolve);
+            });
+        }
+    }
+}
+
+
+module.exports = {CountSemaphore: CountSemaphore, Mutex: Mutex, 
+    MutexRecursive: MutexRecursive, Barrier: Barrier};
