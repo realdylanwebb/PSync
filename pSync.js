@@ -64,30 +64,6 @@ class Mutex{
 }
 
 
-class MutexRecursive{
-    constructor() {
-        this.waiting = [];
-        this.lock = 0;
-    }
-
-    tryLock() {
-        
-    }
-
-    lock() {
-
-    }
-
-    unlock() {
-        this.lock--;
-        if (!this.lock) {
-            let next = this.waiting.pop();
-            next();
-        }
-    }
-}
-
-
 class Barrier {
     constructor(numMembers) {
         this.busy = numMembers;
