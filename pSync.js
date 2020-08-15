@@ -84,5 +84,30 @@ class Barrier {
 }
 
 
+class CompletionEvent {
+    constructor() {
+        this.waiting = [];
+        this.complete = 0;
+    }
+    
+    wait() {
+        if (this.complete) {
+            return new Promise((resolve)=>{
+                resolve();
+            })
+        } else {
+            return new Promise((resolve)=>{
+                this.waiting.push(resolve);
+            });
+        }
+    }
+
+    complete() {
+        this.waiting.forEach(resolve => {
+            resolve();
+        });
+    }
+}
+
 module.exports = {Semaphore: Semaphore, Mutex: Mutex,
-     Barrier: Barrier};
+     Barrier: Barrier, CompletionEvent: CompletionEvent};
