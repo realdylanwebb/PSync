@@ -92,7 +92,7 @@ Constructor. Creates a barrier that will be released when Barrier.signal() is ca
 Signals that one task is completed to the barrier.
 Returns a pending promise. The promise resolves when the barrier is complete.
 
-## Class: CompletionEvent()
+## Class: CompletionEvent
 A use once object that be used to defer execution until a signal is recieved.
 ##### Example
 ```javascript
