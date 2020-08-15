@@ -8,7 +8,7 @@ I'm currently working on a few new types including a deadlock checking mutex, an
 # Documentation
 
 * [Mutex](https://github.com/realdylanwebb/PSync#class-mutex)
-* [CountSemaphore](https://github.com/realdylanwebb/PSync#class-countsemaphore)
+* [Semaphore](https://github.com/realdylanwebb/PSync#class-semaphore)
 * [Barrier](https://github.com/realdylanwebb/PSync#class-barrier)
 
 ## Class: Mutex
