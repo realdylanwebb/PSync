@@ -10,6 +10,7 @@ I'm currently working on a few new types including a deadlock checking mutex, an
 * [Mutex](https://github.com/realdylanwebb/PSync#class-mutex)
 * [Semaphore](https://github.com/realdylanwebb/PSync#class-semaphore)
 * [Barrier](https://github.com/realdylanwebb/PSync#class-barrier)
+* [CompletionEvent](https://github.com/realdylanwebb/PSync#class-completionevent)
 
 ## Class: Mutex
 Async implementation of a mutex.
