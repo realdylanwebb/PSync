@@ -16,7 +16,7 @@ class CountSemaphore {
         this.waiting = [];
     }
 
-    semWait() {
+    wait() {
         if (this.count) {
             this.count--;
         } else {
@@ -26,7 +26,7 @@ class CountSemaphore {
         }
     }
 
-    semPost() {
+    post() {
         this.count++;
         if (this.waiting.length > 0) {
             let next = this.waiting.pop();
@@ -47,18 +47,18 @@ class Mutex{
 
     trylock() {
         if (this.sema.count) {
-            return this.sema.semWait();
+            return this.sema.wait();
         } else {
             return null;
         }
     }
 
     lock() {
-        return this.sema.semWait();
+        return this.sema.wait();
     }
 
     unlock() {
-        this.sema.semPost();
+        this.sema.post();
     }
 }
 
