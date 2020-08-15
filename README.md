@@ -44,28 +44,28 @@ Attempts to aquire the lock. If the mutex is already locked, returns a pending p
 ### Mutex.unlock()
 Releases the lock and resolves the next waiting promise.
 
-## Class: CountSemaphore
+## Class: Semaphore
 Async semaphore, set maxMembers = 1 for a binary semaphore.
 ##### Example:
 ```javascript
-let semaphore = require("psync").CountSemaphore(5 /* Specify maxMembers here */);
+let semaphore = require("psync").Semaphore(5 /* Specify maxMembers here */);
 
 async function example() {
   /* If the semaphore is in use maxMembers times, this will 
   defer execution until the semaphore is ready */
-  await semaphore.semWait();
+  await semaphore.wait();
   /* Critical section of code here */
-  semaphore.semPost();
+  semaphore.post();
 }
 ```
 
-### CountSemaphore(maxMembers)
+### Semaphore(maxMembers)
 Creates a semaphore that can be aquired maxMembers times before defering execution.
 
-### CountSemaphore.semWait()
+### Semaphore.wait()
 Reduces the semaphore count. If the count is 0, returns a pending promise that will be resolved when the semaphore is available again.
 
-### CountSemaphore.semPost()
+### Semaphore.post()
 Increases the semaphore count. If there is a promise waiting, resolves the next waiting promise.
 
 ## Class: Barrier
