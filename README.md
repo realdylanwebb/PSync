@@ -90,3 +90,30 @@ Constructor. Creates a barrier that will be released when Barrier.signal() is ca
 ### Barrier.signal()
 Signals that one task is completed to the barrier.
 Returns a pending promise. The promise resolves when the barrier is complete.
+
+## Class: CompletionEvent()
+A use once object that be used to defer execution until a signal is recieved.
+##### Example
+```javascript
+let ce = require("psync").CompletionEvent()
+
+async function example() {
+  /* Will not proceed until ce.complete() is called somewhere else */
+  await ce.wait();
+  /* More code here */
+}
+
+async function example() {
+  /* Code that needs to be completed first */
+  ce.complete();
+  /* Now any pending waits will be resolved */
+}
+```
+
+### CompletionEvent.wait()
+Returns a pending promise that will be resolved when CompletionEvent.complete() is called elsewhere.
+If CompletionEvent.complete() has already been called, the promise will resolve immediately.
+
+### CompletionEvent.complete()
+Resolves all pending promises that have been returned by CompletionEvent.wait(). Does nothing if the event is
+already complete.
