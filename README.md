@@ -1,6 +1,6 @@
 # PSync
 A pure Javascript implementation of some semaphores and mutexes.
-This module aims to provide syncronization mechanisms for use in asynchronous or parallel applications, similar to the ones provided by the POSIX interface or the C++ Standard Library.
+This module aims to provide syncronization mechanisms for use in asynchronous or parallel applications.
 
 # Future Goals
 I'm currently working on a few new types including a deadlock checking mutex, and a recursive mutex. I would also like to add some nice FIFO queues.
