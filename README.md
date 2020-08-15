@@ -104,7 +104,7 @@ async function example() {
   /* More code here */
 }
 
-async function example() {
+async function example2() {
   /* Code that needs to be completed first */
   ce.complete();
   /* Now any pending waits will be resolved */
