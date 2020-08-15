@@ -10,7 +10,7 @@
 */
 
 
-class CountSemaphore {
+class Semaphore {
     constructor(maxMembers) {
         this.count = maxMembers;
         this.waiting = [];
@@ -29,7 +29,7 @@ class CountSemaphore {
     post() {
         this.count++;
         if (this.waiting.length > 0) {
-            let next = this.waiting.pop();
+            let next = this.waiting.shift();
             this.count--;
             next();
         }
@@ -42,7 +42,7 @@ class Mutex{
     /* All this does is wrap a binary semaphore and provide trylock as a convinience method 
        for checking the lock state before trying to contest the lock. */
     constructor() {
-        this.sema = new CountSemaphore(1);
+        this.sema = new Semaphore(1);
     }
 
     trylock() {
@@ -84,5 +84,5 @@ class Barrier {
 }
 
 
-module.exports = {CountSemaphore: CountSemaphore, Mutex: Mutex, 
-    MutexRecursive: MutexRecursive, Barrier: Barrier};
+module.exports = {Semaphore: Semaphore, Mutex: Mutex,
+     Barrier: Barrier};
