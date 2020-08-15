@@ -6,8 +6,7 @@
 *   This file and its contents are subject to the terms and conditions defined in the file 'LICENSE',
 *   which is to be distributed with this source code or binary package. 
 *   
-*   A collection of simple mutexes and semaphores inspired by POSIX. 
-*   Namely the pthread_mutex interface, and POSIX semaphores.
+*   A collection of simple mutexes and semaphores.
 */
 
 
