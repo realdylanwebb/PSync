@@ -2,8 +2,8 @@
 /* This guy above is for the linter just ignore it */
 
 /*
-*   Copyright (C) Dylan Webb 2020
-*   This file and it's contents are subject to the terms and conditions defined in the file 'LICENSE',
+*   Copyright (c) Dylan Webb 2020
+*   This file and its contents are subject to the terms and conditions defined in the file 'LICENSE',
 *   which is to be distributed with this source code or binary package. 
 *   
 *   A collection of simple mutexes and semaphores inspired by POSIX. 
