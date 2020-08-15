@@ -3,7 +3,7 @@ A pure Javascript implementation of some semaphores and mutexes.
 This module aims to provide syncronization mechanisms for use in asynchronous or parallel applications, similar to the ones provided by the POSIX interface or the C++ Standard Library.
 
 # Future Goals
-This is a work in progress, although everything I've documented here has been thorougly tested and works. I'm currently working on a few new types including an error checking mutex, and a recursive mutex. I would also like to add some nice FIFO queues.
+This is a work in progress, although everything I've documented here has been thorougly tested and works. I'm currently working on a few new types including a deadlock checking mutex, and a recursive mutex. I would also like to add some nice FIFO queues.
 
 # Documentation
 
