@@ -63,6 +63,50 @@ class Mutex{
 }
 
 
+class MutexRecursive  {
+    /* I was going to implement this one around the semaphore class as well,
+       but this approach is much more lightweight. */
+    constructor() {
+        this.lock = 0;
+        this.owner = null;
+        this.waiting = [];
+    }
+
+    tryLock(promiseOrNull) {
+        if (promiseOrNull === this.owner) {
+            return this.lock(promiseOrNull);
+        } else {
+            return null;
+        }
+    }
+
+    lock(promiseOrNull) {
+        if(promiseOrNull === this.owner) {
+            this.lock++;
+            this.owner = new Promise((resolve)=> {
+                resolve();
+            })
+            return this.owner;
+        } else {
+            return new Promise((resolve)=>{
+                this.waiting.push(resolve);
+            })
+        }
+    }
+
+    unlock() {
+        this.lock--;
+        if (this.waiting.length) {
+            this.owner = new Promise.resolve();
+            let next = this.waiting.shift();
+            next();
+        } else {
+            this.owner = null;
+        }
+    }
+}
+
+
 class Barrier {
     constructor(numMembers) {
         this.busy = numMembers;
