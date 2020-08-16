@@ -111,6 +111,9 @@ async function example2() {
 }
 ```
 
+### CompletionEvent()
+Constructor. The completion event can be waited upon by as many callees as necessary. Completing the completion event will continue execution for all callees.
+
 ### CompletionEvent.wait()
 Returns a pending promise that will be resolved when CompletionEvent.complete() is called elsewhere.
 If CompletionEvent.complete() has already been called, the promise will resolve immediately.
